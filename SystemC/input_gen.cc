@@ -25,7 +25,7 @@ Generator::~Generator() {
 
 void Generator::generate_thread() {
   while (!in->eof()) {
-    wait(1, SC_SEC);     // Generate new inputs every second.
+    wait(1, SC_SEC);     // Generate new cars every second.
     *in >> cars_in[0] >> cars_in[1] >> cars_in[2] >> cars_in[3]; // Read from the input file.
     trigger_event.notify();
   }
@@ -34,16 +34,18 @@ void Generator::generate_thread() {
 }
 
 void Generator::update_cars() {
-  if (cars_progress[0]+cars_progress[1]+cars_progress[2]+cars_progress[3] > 0) {
+  if (cars_progress[0]+cars_progress[1]+cars_progress[2]+cars_progress[3] > 0 || cars[0]+cars[1]+cars[2]+cars[3] > 0) {
+    // for(int i; i<4; i++) {
+    //   cars[i]=cars_progress[i];
+    // }
+    // Workaround monitor bug.
     cars[0]=cars_progress[0];
     cars[1]=cars_progress[1];
     cars[2]=cars_progress[2];
     cars[3]=cars_progress[3];
   } else if (!in->eof()) {
     for(int i; i<4; i++) {
-      cars[i]->write(cars_in[i]);
+      cars[i]=cars_in[i];
     }
-  } else {
-    exit(0);
   }
 }
