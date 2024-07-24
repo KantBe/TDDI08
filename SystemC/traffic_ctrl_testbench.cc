@@ -19,8 +19,8 @@ int sc_main(int argc, char **argv) {
 
   // Connect the channels to the ports.
   control(cars_sig[0], cars_sig[1], cars_sig[2], cars_sig[3], cars_progress_sig[0], cars_progress_sig[1], cars_progress_sig[2], cars_progress_sig[3], lights_sig[0], lights_sig[1], lights_sig[2], lights_sig[3]);
-  gen(cars_sig[0], cars_sig[1], cars_sig[2], cars_sig[3], cars_progress_sig[0], cars_progress_sig[1], cars_progress_sig[2], cars_progress_sig[3]);
-  monitor(cars_sig[0], cars_sig[1],cars_sig[2],cars_sig[3], lights_sig[0], lights_sig[1],lights_sig[2],lights_sig[3]);
+  gen(cars_sig[0], cars_sig[1], cars_sig[2], cars_sig[3], cars_progress_sig[0], cars_progress_sig[1], cars_progress_sig[2], cars_progress_sig[3], lights_sig[0], lights_sig[1], lights_sig[2], lights_sig[3]);
+  monitor(cars_sig[0], cars_sig[1], cars_sig[2], cars_sig[3], lights_sig[0], lights_sig[1], lights_sig[2], lights_sig[3]);
 
   // Start the simulation.
   sc_start();

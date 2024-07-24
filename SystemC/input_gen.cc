@@ -15,7 +15,7 @@ Generator::Generator(sc_module_name name, char *datafile) : sc_module(name) {
 
   SC_METHOD(update_cars_method);
   dont_initialize();
-  sensitive << cars_progress[0] << cars_progress[1] << cars_progress[2] << cars_progress[3];
+  sensitive << lights[0] << lights[1] << lights[2] << lights[3];
   sensitive << trigger_update;
 }
 
@@ -29,7 +29,6 @@ void Generator::generate_thread() {
     *in >> cars_in[0] >> cars_in[1] >> cars_in[2] >> cars_in[3]; // Read from the input file.
     trigger_update.notify();
   }
-
   exit(0);
 }
 

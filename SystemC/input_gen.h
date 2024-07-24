@@ -9,6 +9,7 @@ using std::ifstream;
 SC_MODULE(Generator) {
   sc_out<bool> cars[4];
   sc_in<bool> cars_progress[4];
+  sc_in<bool> lights[4];
   sc_event trigger_update;
 
   SC_HAS_PROCESS(Generator);
