@@ -12,7 +12,7 @@ SC_MODULE(Control) {
   SC_HAS_PROCESS(Control);
   Control(sc_module_name name);
 
-  void update();
+  void update_method();
 };
 
 #endif

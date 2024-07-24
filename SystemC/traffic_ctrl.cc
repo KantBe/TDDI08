@@ -1,17 +1,17 @@
 #include "traffic_ctrl.h"
 
 Control::Control(sc_module_name name) : sc_module(name) {
-  for(int i; i<4; i++) {
+  for (int i; i<4; i++) {
     lights[i].initialize(0);
     cars_progress[i].initialize(0);
   }
 
-  SC_METHOD(update);
+  SC_METHOD(update_method);
   dont_initialize();
   sensitive << cars[0] << cars[1] << cars[2] << cars[3];
 }
 
-void Control::update() {
+void Control::update_method() {
   bool lightN, lightS, lightW, lightE;
 
   lightN = cars[0];
